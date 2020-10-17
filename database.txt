@@ -1,2 +1,4 @@
-Apple Qua tao
-Banana Qua chuoi
+apple	Qua tao
+banana	Qua chuoi
+orange	Qua cam
+watermelon	Qua dua hau

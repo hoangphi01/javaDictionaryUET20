@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,14 +8,14 @@ public class DictionaryCommandline {
         List<Word> wordList = dictionary.getWordList();
 
         for (int i = 0; i < wordList.size(); i++) {
-            System.out.println(i+1 + ": " + wordList.get(i).getTarget() + ": " + wordList.get(i).getExplain());
+            //System.out.println(i+1 + ": " + wordList.get(i).getTarget() + ": " + wordList.get(i).getExplain());
+            System.out.printf("%-20s%3s%n", wordList.get(i).getTarget(), wordList.get(i).getExplain());
         }
     }
 
     public static void QuantityofDictionary(Dictionary dictionary) {
         int numofwords = 0;
 
-        System.out.println("Từ điển Anh-Việt phiên bản 1.0");
         System.out.println("Nhập số lượng từ cần thêm: ");
 
         Scanner inputqty = new Scanner(System.in);
@@ -32,5 +33,31 @@ public class DictionaryCommandline {
             newWord = new Word(insertWrd, insertDef);
             dictionary.insert(newWord);
         }
+    }
+
+    public static void dictionaryAdvanced(Dictionary dictionary) throws IOException {
+        System.out.println("Từ điển Anh-Việt phiên bản 1.2");
+        System.out.println("Nhập 1 để hiển thị toàn bộ nội dung từ điển: ");
+        System.out.println("Nhập 2 để tra từ: ");
+        System.out.println("Nhập 0 dể kết thúc: ");
+
+        Scanner sc = new Scanner(System.in);
+        int userSelection = sc.nextInt();
+
+        if (userSelection == 1) {
+            DictionaryManagement.insertFromFile(dictionary);
+            System.out.print(dictionary.toString());
+        }
+
+        else if (userSelection == 2) {
+            DictionaryManagement.insertFromFile(dictionary);
+            DictionaryManagement.dictionaryLookup(dictionary);
+        }
+
+        else if (userSelection == 0) {
+            System.exit(0);
+        }
+
+
     }
 }

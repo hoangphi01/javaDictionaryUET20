@@ -15,4 +15,13 @@ public class Dictionary {
     List<Word> getWordList() {
         return wordList;
     }
+
+    @Override
+    public String toString() {
+        String s = "";
+        for(int i = 0; i <  wordList.size(); i++) {
+            s = s + String.format("%-20s%3s%n", wordList.get(i).getTarget(), wordList.get(i).getExplain());
+        }
+        return s;
+    }
 }
