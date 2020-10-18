@@ -1,0 +1,6 @@
+zoo	cong vien
+cat	con meo
+apple	Qua tao
+banana	Qua chuoi
+orange	Qua cam
+watermelon	Qua dua hau

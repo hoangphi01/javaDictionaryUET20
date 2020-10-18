@@ -37,16 +37,19 @@ public class DictionaryCommandline {
 
     public static void dictionaryAdvanced(Dictionary dictionary) throws IOException {
         System.out.println("Từ điển Anh-Việt phiên bản 1.2");
-        System.out.println("Nhập 1 để hiển thị toàn bộ nội dung từ điển: ");
-        System.out.println("Nhập 2 để tra từ: ");
+        System.out.println("Nhập 1 để thêm nội dung, hiển thị toàn bộ từ điển, viết file databaseOutput.txt và tra từ: ");
+        System.out.println("Nhập 2 để tra cứu từ file database.txt: ");
         System.out.println("Nhập 0 dể kết thúc: ");
 
         Scanner sc = new Scanner(System.in);
         int userSelection = sc.nextInt();
 
         if (userSelection == 1) {
+            QuantityofDictionary(dictionary);
             DictionaryManagement.insertFromFile(dictionary);
             System.out.print(dictionary.toString());
+            DictionaryManagement.dictionaryExportToFile(dictionary);
+            DictionaryManagement.dictionaryLookup(dictionary);
         }
 
         else if (userSelection == 2) {
@@ -60,4 +63,6 @@ public class DictionaryCommandline {
 
 
     }
+
+    
 }

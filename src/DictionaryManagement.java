@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
 import java.io.*;
+import java.io.FileWriter;
+
 public class DictionaryManagement {
     public static void insertFromCommandline(Dictionary dictionary) {
 
@@ -36,7 +38,23 @@ public class DictionaryManagement {
                 System.out.printf("%-20s%3s%n", wordList.get(i).getTarget(), wordList.get(i).getExplain());
             }
         }
+    }
 
+    public static void dictionaryExportToFile(Dictionary dictionary) throws IOException {
+        List<Word> wordList = dictionary.getWordList();
+
+        FileWriter writer = new FileWriter("databaseOutput.txt");
+        int size = dictionary.wordList.size();
+        for (int i=0;i<size;i++) {
+            String str1 = wordList.get(i).getTarget().toString();
+            String str2 = wordList.get(i).getExplain().toString();
+            writer.write(str1);
+            writer.write("\t");
+            writer.write(str2);
+            if(i < size-1);//This prevent creating a blank like at the end of the file**
+            writer.write("\n");
+        }
+        writer.close();
     }
 
 
